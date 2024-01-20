@@ -1,0 +1,6 @@
+#!/bin/sh
+
+set -e
+USER_ID=`id -u "$USER"`
+/bin/launchctl bootstrap gui/$USER_ID /Library/LaunchAgents/com.shortstorybox.SmartcardIdentifier.plist
+

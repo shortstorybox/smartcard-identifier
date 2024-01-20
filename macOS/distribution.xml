@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<installer-gui-script minSpecVersion="1">
+    <title>Smartcard Identifier</title>
+    <organization>com.shortstorybox</organization>
+    <domains enable_localSystem="true"/>
+    <options customize="never" require-scripts="true" rootVolumeOnly="true" hostArchitectures="arm64,x86_64" />
+    <!-- List all component packages -->
+    <pkg-ref id="com.shortstorybox.SmartcardIdentifier"
+             version="0"
+             auth="root">package.pkg</pkg-ref>
+    <!-- List them again here. They can now be organized
+         as a hierarchy if you want. -->
+    <choices-outline>
+        <line choice="com.shortstorybox.SmartcardIdentifier"/>
+    </choices-outline>
+    <!-- Define each choice above -->
+    <choice
+        id="com.shortstorybox.SmartcardIdentifier"
+        visible="false"
+        title="Smartcard Identifier"
+        description="Simple smartcard system to read just the card identifier"
+        start_selected="true">
+      <pkg-ref id="com.shortstorybox.SmartcardIdentifier"/>
+    </choice>
+</installer-gui-script>
