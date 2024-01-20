@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -e
+USER_ID=`id -u "$USER"`
+if /bin/launchctl print gui/$USER_ID/com.shortstorybox.SmartcardIdentifier &> /dev/null; then
+    /bin/launchctl bootout gui/$USER_ID/com.shortstorybox.SmartcardIdentifier
+fi
+
+/usr/bin/pip3 install pyscard
+
