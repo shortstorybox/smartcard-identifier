@@ -5,9 +5,14 @@ ID number, and pastes it as text into the currently open application. This can
 be used for applications that rely on nothing more than the identity of the
 scanned card, such as an authentication system in a low-security environment.
 
-Smartcard Identifier is implemented in Python and is compatible with Linux,
-macOS, and Windows. Currently only the installer for macOS is implemented; on
-other systems you'll have to run the Python script from a terminal.
+
+# Installation
+
+[Download for macOS](https://github.com/shortstorybox/smartcard-identifier/releases/latest)
+
+Smartcard Identifier is compatible with Linux, macOS, and Windows. Currently an installer
+is only available for macOS, so on other systems you'll have to run the Python script
+from a terminal.
 
 
 # Release Process
