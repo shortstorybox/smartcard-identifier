@@ -1,0 +1,30 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "smartcard-identifier"
+version = "1.1.0"
+authors = [
+  { name="Samuel Hoffstaetter", email="sam@shortstorybox.com" },
+]
+description = "Read smart card ID number and emulate a keyboard to paste it as text."
+readme = "README.md"
+requires-python = ">=3.3"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+    "Operating System :: Unix",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: MacOS :: MacOS X"
+]
+
+[project.urls]
+Homepage = "https://github.com/shortstorybox/smartcard-identifier"
+Issues = "https://github.com/shortstorybox/smartcard-identifier/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/smartcard_identifier.py"]
+
+[project.scripts]
+cli-name = "smartcard_identifier:main"

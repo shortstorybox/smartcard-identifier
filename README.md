@@ -12,13 +12,16 @@ scanned card, such as an authentication system in a low-security environment.
 
 Smartcard Identifier is compatible with Linux, macOS, and Windows. Currently an installer
 is only available for macOS, so on other systems you'll have to run the Python script
-from a terminal.
+from a terminal:
+
+    $ pip3 install smartcard-identifier
+    $ smartcard-identifier --help
 
 
 # Release Process
 
-To build the macOS package installer, first increment the VERSION file and then
-run the following:
+To build the python package and the macOS package installer, first increment
+the version in pyproject.toml, then run the following:
 
-    $ make SmartcardIdentifier.pkg
+    $ make all
 
