@@ -29,8 +29,8 @@ On macOS you'll need to add permissions for simulating a keyboard:
 
 # Release Process
 
-To build the python package and the macOS package installer, first increment
-the version in pyproject.toml, then run the following:
+First increment the version in pyproject.toml, then run the following to build
+and upload the release to Github and PyPI:
 
-    $ make all
+    $ make release
 
