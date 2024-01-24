@@ -12,8 +12,8 @@ scanned card, such as an authentication system in a low-security environment.
 
  * Install the package above. This will also add python3 to the security settings
    which you'll enable the in the next two steps.
- * Open System Settings -> Privacy & Security -> Accessibility and enable permissions for python3.
  * Open System Settings -> Privacy & Security -> Automation and enable permissions for python3.
+ * Open System Settings -> Privacy & Security -> Accessibility and enable permissions for python3.
 
 If you can't find python3 in the list, click the "+" button, then
 press Command+Shift+G and type /usr/bin/python3
