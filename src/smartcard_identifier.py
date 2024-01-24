@@ -142,7 +142,9 @@ def main():
         if platform_system() != "Darwin":
             sys.exit("ERROR: --test-permissions is only supported on macOS")
         try:
-            simulate_keypress("\u00A7", use_linux_uinput=False, osx_control_modifier=True)
+            simulate_keypress(
+                "\u00A7", use_linux_uinput=False, osx_control_modifier=True
+            )
         except Exception as err:
             sys.exit(f"ERROR: {err}")
         else:
