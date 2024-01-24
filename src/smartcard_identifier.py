@@ -28,7 +28,9 @@ def simulate_keypress(text, use_linux_uinput, command_modifier=False):
     """
     Paste the given text into the current application.
     """
-    without_special_characters = text.replace("\n", "").replace(" ", "").replace(":", "")
+    without_special_characters = (
+        text.replace("\n", "").replace(" ", "").replace(":", "")
+    )
     if without_special_characters and not without_special_characters.isalnum():
         raise Exception(
             "Keystroke text must be alphanumeric (spaces/newlines/colon allowed)"
