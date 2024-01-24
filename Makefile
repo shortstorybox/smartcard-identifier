@@ -36,9 +36,9 @@ format:
 
 .PHONY: release
 release: dist SmartcardIdentifier.pkg
-	git diff --exit-code || (echo "Please commit your git changes before releasing."; exit 1)
-	git diff --cached --exit-code || (echo "Please commit your git changes before releasing."; exit 1)
-	which gh >/dev/null || (echo "The 'gh' command is missing. Please install the GitHub CLI: https://cli.github.com/"; exit 1)
+	@git diff --exit-code || (echo "Please commit your git changes before releasing."; exit 1)
+	@git diff --cached --exit-code || (echo "Please commit your git changes before releasing."; exit 1)
+	@which gh >/dev/null || (echo "The 'gh' command is missing. Please install the GitHub CLI: https://cli.github.com/"; exit 1)
 	@echo 'Uploading release to Github...'
 	@GH_PROMPT_DISABLED= gh release create --target="$$(git rev-parse HEAD)" \
 		--title=v"$$(grep '^version *= *' pyproject.toml|sed 's/^version *= *//;s/\"//g')" \
