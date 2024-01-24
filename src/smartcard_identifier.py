@@ -24,7 +24,7 @@ def platform_system():
 _last_simulated_keypress = 0
 
 
-def simulate_keypress(text, use_linux_uinput, command_modifier=False):
+def simulate_keypress(text, use_linux_uinput, osx_control_modifier=False):
     """
     Paste the given text into the current application.
     """
@@ -40,7 +40,7 @@ def simulate_keypress(text, use_linux_uinput, command_modifier=False):
         cmd = [
             "osascript",
             "-e",
-            f'tell application "System Events" to keystroke "{text}"{" using command down" if command_modifier else ""}',
+            f'tell application "System Events" to keystroke "{text}"{" using control down" if osx_control_modifier else ""}',
         ]
     elif platform_system() == "Linux":
         if use_linux_uinput:
@@ -142,7 +142,7 @@ def main():
         if platform_system() != "Darwin":
             sys.exit("ERROR: --test-permissions is only supported on macOS")
         try:
-            simulate_keypress(":", use_linux_uinput=False, command_modifier=True)
+            simulate_keypress("\u00A7", use_linux_uinput=False, osx_control_modifier=True)
         except Exception as err:
             sys.exit(f"ERROR: {err}")
         else:
