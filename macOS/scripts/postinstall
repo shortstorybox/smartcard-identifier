@@ -3,4 +3,5 @@
 set -e
 USER_ID=`id -u "$USER"`
 /bin/launchctl bootstrap gui/$USER_ID /Library/LaunchAgents/com.shortstorybox.SmartcardIdentifier.plist
+/usr/local/bin/smartcard-identifier --test-permissions || echo 'Needs macOS permissions for Automation and Accessibility'
 

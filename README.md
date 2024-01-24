@@ -6,13 +6,22 @@ be used for applications that rely on nothing more than the identity of the
 scanned card, such as an authentication system in a low-security environment.
 
 
-# Installation
+# Installation: macOS
 
 [Download for macOS](https://github.com/shortstorybox/smartcard-identifier/releases/latest)
 
-Smartcard Identifier is compatible with Linux, macOS, and Windows. Currently an installer
-is only available for macOS, so on other systems you'll have to run the Python script
-from a terminal:
+On macOS you'll need to add permissions for simulating a keyboard:
+
+ * Install the package above. This will add python3 to the Security settings
+   which you'll enable the in the next two steps.
+ * Open System Settings -> Privacy & Security -> Accessibility and enable
+   permissions for python3 (and Terminal if you intend to run from a terminal).
+   If you can't find python3 in the list, click the "+" button, then
+   press Command+Shift+G and type /usr/bin/python3
+ * Open System Settings -> Privacy & Security -> Automation and enable permissions for python3.
+
+
+# Installation: Linux/Windows
 
     $ pip3 install smartcard-identifier
     $ smartcard-identifier --help
