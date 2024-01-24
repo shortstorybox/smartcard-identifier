@@ -27,4 +27,5 @@ Issues = "https://github.com/shortstorybox/smartcard-identifier/issues"
 packages = ["src/smartcard_identifier.py"]
 
 [project.scripts]
-cli-name = "smartcard_identifier:main"
+smartcard-identifier = "smartcard_identifier:main"
+
