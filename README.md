@@ -20,6 +20,8 @@ press Command+Shift+G and type /usr/bin/python3
 
 # Installation: Linux/Windows
 
+https://pypi.org/project/smartcard-identifier/
+
     $ pip3 install smartcard-identifier
     $ smartcard-identifier --help
 
