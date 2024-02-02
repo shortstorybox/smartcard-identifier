@@ -1,19 +1,21 @@
 all: SmartcardIdentifier.pkg dist
 
-.PHONY: build/package.pkg
-build/package.pkg: lint
+build/package.pkg: lint pyproject.toml src/smartcard_identifier.py macOS/com.shortstorybox.SmartcardIdentifier.plist
 	rm -rf build/
 	mkdir -p build/package/usr/local/bin/ build/package/Library/LaunchAgents/
+	cp macOS/com.shortstorybox.SmartcardIdentifier.plist build/package/Library/LaunchAgents/
 	# The script must run using the built-in system version of Python
 	echo '#!/usr/bin/python3' | cat - src/smartcard_identifier.py > build/package/usr/local/bin/smartcard-identifier
 	chmod +x build/package/usr/local/bin/smartcard-identifier
-	cp macOS/com.shortstorybox.SmartcardIdentifier.plist build/package/Library/LaunchAgents/
 	pkgbuild --root build/package --identifier com.shortstorybox.SmartcardIdentifier \
 		--version "$$(grep '^version *= *' pyproject.toml|sed 's/^version *= *//;s/\"//g')" \
 		--ownership recommended --scripts macOS/scripts build/package.pkg
 
 SmartcardIdentifier.pkg: build/package.pkg macOS/distribution.xml
-	productbuild --distribution macOS/distribution.xml --package-path build/ SmartcardIdentifier.pkg
+	# Make sure you have and "Developer ID Application" certificate
+	# installed in your keychain. You can download it from
+	# https://developer.apple.com/account/resources/certificates/list
+	productbuild --distribution macOS/distribution.xml --package-path build/ --sign 'Developer ID Installer: Short Story, Inc. (PD7WK7PS94)' SmartcardIdentifier.pkg
 
 .PHONY: dist
 dist: lint
@@ -25,8 +27,8 @@ dist: lint
 lint:
 	python3 -m pip install ruff black isort
 	python3 -m ruff src/
-	python3 -m black --check src/ || (echo "Please run 'make format' to fix formatting issues."; exit 1)
-	python3 -m isort src/ || (echo "Please run 'make format' to fix formatting issues."; exit 1)
+	@python3 -m black --check src/ || (echo "Please run 'make format' to fix formatting issues."; exit 1)
+	@python3 -m isort src/ || (echo "Please run 'make format' to fix formatting issues."; exit 1)
 
 .PHONY: format
 format:

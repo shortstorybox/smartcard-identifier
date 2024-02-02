@@ -26,8 +26,17 @@ press Command+Shift+G and type /usr/bin/python3
 
 # Release Process
 
-First increment the version in pyproject.toml, then run the following to build
-and upload the release to Github and PyPI:
+To sign the macOS release you will need to have the relevant Developer
+Certificate installed in your Keychain, which you can download from
+https://developer.apple.com/account/resources/certificates/list . Make sure
+you've also Apple's intermediate certificates installed, which you can download
+from the bottom of
+https://developer.apple.com/account/resources/certificates/add . Without these,
+the Developer Certificate will show up as "untrusted" in Keychain Access.
+
+
+To build & publish a release, first increment the version in pyproject.toml,
+then run the following to build and upload to Github and PyPI:
 
     $ make release
 
