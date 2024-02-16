@@ -72,8 +72,8 @@ def simulate_keypress(text, use_linux_uinput, osx_control_modifier=False):
         return
     stdout, stderr = p.communicate()
     if p.returncode != 0:
-        sys.stderr("Failed to simulate keypress: ")
-        sys.stderr.write(stderr)
+        sys.stderr.write("Failed to simulate keypress: ")
+        sys.stderr.write(stderr.decode())
         sys.stderr.write("\n")
         sys.stderr.flush()
 
@@ -153,7 +153,7 @@ def main():
     if platform_system() == "Linux":
         if args.uinput:
             shutil.which("ydotool") or sys.exit(
-                "Please install `ydotool`, e.g.:\n\n    $ sudo apt-get install ydotool"
+                "Please install `ydotool`, e.g.:\n\n    $ sudo apt-get install ydotoold ydotool"
             )
         elif args.x11:
             shutil.which("xdotool") or sys.exit(
