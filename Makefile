@@ -46,7 +46,7 @@ release: dist SmartcardIdentifier.pkg
 		--title=v"$$(grep '^version *= *' pyproject.toml|sed 's/^version *= *//;s/\"//g')" \
 		--generate-notes v"$$(grep '^version *= *' pyproject.toml|sed 's/^version *= *//;s/\"//g')" \
 		SmartcardIdentifier.pkg
-	python3 -m pip install twine
+	python3 -m pip install --upgrade twine
 	@echo
 	@if [ ! -e ~/.pypirc ]; \
 	 then echo "Please create a PyPI API token: https://pypi.org/manage/account/token/"; \
