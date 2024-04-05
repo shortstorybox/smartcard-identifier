@@ -105,6 +105,7 @@ def run(print_only, use_linux_uinput):
                     print(card_id)
                 else:
                     simulate_keypress(card_id, use_linux_uinput=use_linux_uinput)
+                    simulate_keypress("\n", use_linux_uinput=use_linux_uinput)
             else:
                 sys.stderr.write("Failed to read card ID\n")
                 sys.stderr.flush()
