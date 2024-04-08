@@ -133,7 +133,7 @@ def main():
         help="Use uinput to simulate keypresses. Requires user to be in the 'input' group, or to run as root. (Linux only)",
     )
     group.add_argument(
-        "--print",
+        "--stdout",
         action="store_true",
         help="Print the card ID to stdout instead of simulating keypresses.",
     )
@@ -159,16 +159,16 @@ def main():
             shutil.which("xdotool") or sys.exit(
                 "Please install `xdotool`, e.g.:\n\n    $ sudo apt-get install xdotool"
             )
-        elif args.print:
+        elif args.stdout:
             pass
         else:
             parser.print_help()
-            sys.exit("ERROR: You must specify either --x11 or --uinput or --print")
+            sys.exit("ERROR: You must specify either --x11 or --uinput or --stdout")
 
     def do_run(*_, **__):
-        run(print_only=args.print, use_linux_uinput=args.uinput)
+        run(print_only=args.stdout, use_linux_uinput=args.uinput)
 
-    if args.print:
+    if args.stdout:
         # Disable keyboard echoing on the terminal, which can cause confusion
         # if the script is running at the same time somewhere else
         _raw_input = getpass._raw_input
