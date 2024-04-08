@@ -42,3 +42,16 @@ then run the following to build and upload to Github and PyPI:
 
     $ make release
 
+# Notes
+
+If you run into the following error installing via `pip3 install smartcard-identifier` on macOS:
+
+    × Building wheel for pyscard (pyproject.toml) did not run successfully.
+    │ exit code: 1
+    ╰─> [5 lines of output]
+        running bdist_wheel
+        running build
+        running build_py
+        Install swig and try again
+
+then you can fix the above error by running `brew install swig`.
