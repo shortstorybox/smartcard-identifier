@@ -25,7 +25,7 @@ dist: lint
 
 .PHONY: lint
 lint:
-	python4 -m pip install ruff black isort
+	python3 -m pip install ruff black isort
 	python3 -m ruff check src/
 	@python3 -m black --check src/ || (echo "Please run 'make format' to fix formatting issues."; exit 1)
 	@python3 -m isort src/ || (echo "Please run 'make format' to fix formatting issues."; exit 1)
