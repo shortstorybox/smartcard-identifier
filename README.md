@@ -2,8 +2,8 @@
 
 This is an extremely simple smartcard system that reads only the smart card's
 ID number, and pastes it as text into the currently open application. This can
-be used for applications that rely on nothing more than the identity of the
-scanned card, such as an authentication system in a low-security environment.
+be used for applications that rely on nothing more than the ID of the
+scanned card.
 
 
 # Installation: macOS
