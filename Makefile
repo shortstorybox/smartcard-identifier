@@ -20,19 +20,19 @@ SmartcardIdentifier.pkg: build/package.pkg macOS/distribution.xml
 .PHONY: dist
 dist: lint
 	rm -rf dist/
-	python3 -m pip install build
+	python3 -m pip install build --break-system-packages
 	python3 -m build
 
 .PHONY: lint
 lint:
-	python3 -m pip install ruff black isort
+	python3 -m pip install ruff black isort --break-system-packages
 	python3 -m ruff check src/
 	@python3 -m black --check src/ || (echo "Please run 'make format' to fix formatting issues."; exit 1)
 	@python3 -m isort src/ || (echo "Please run 'make format' to fix formatting issues."; exit 1)
 
 .PHONY: format
 format:
-	python3 -m pip install black isort
+	python3 -m pip install black isort --break-system-packages
 	python3 -m black src/
 	python3 -m isort src/
 
@@ -46,7 +46,7 @@ release: dist SmartcardIdentifier.pkg
 		--title=v"$$(grep '^version *= *' pyproject.toml|sed 's/^version *= *//;s/\"//g')" \
 		--generate-notes v"$$(grep '^version *= *' pyproject.toml|sed 's/^version *= *//;s/\"//g')" \
 		SmartcardIdentifier.pkg
-	python3 -m pip install --upgrade twine
+	python3 -m pip install --upgrade twine --break-system-packages
 	@echo
 	@if [ ! -e ~/.pypirc ]; \
 	 then echo "Please create a PyPI API token: https://pypi.org/manage/account/token/"; \
