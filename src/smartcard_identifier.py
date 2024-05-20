@@ -29,7 +29,7 @@ def simulate_keypress(text, use_linux_uinput, osx_control_modifier=False):
     Paste the given text into the current application.
     """
     without_special_characters = (
-        text.replace("\n", "").replace(" ", "").replace(":", "")
+        text.replace("\n", "").replace(" ", "").replace(":", "").replace("\u00A7", "")
     )
     if without_special_characters and not without_special_characters.isalnum():
         raise Exception(
