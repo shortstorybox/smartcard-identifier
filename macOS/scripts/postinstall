@@ -2,8 +2,7 @@
 
 set -e
 USER_ID=`id -u "$USER"`
-/bin/launchctl remove /Library/LaunchAgents/com.shortstorybox.SmartcardIdentifier.plist
-/bin/launchctl bootstrap gui/$USER_ID /Library/LaunchAgents/com.shortstorybox.SmartcardIdentifier.plist
+/bin/launchctl bootstrap gui/$USER_ID /Library/LaunchAgents/com.shortstorybox.SmartcardIdentifier.plist || true
 /bin/launchctl submit -l SmartcardIdentifierPermissions -- bash -c '/usr/local/bin/smartcard-identifier --test-permissions; /bin/launchctl remove SmartcardIdentifierPermissions'
 /bin/launchctl remove SmartcardIdentifierPermissions
 
