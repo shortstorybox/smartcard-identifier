@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "smartcard-identifier"
-version = "1.8.6"
+version = "1.8.7"
 authors = [
   { name="Samuel Hoffstaetter", email="sam@shortstorybox.com" },
 ]
