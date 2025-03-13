@@ -29,7 +29,7 @@ def simulate_keypress(text, use_linux_uinput, osx_control_modifier=False):
     Paste the given text into the current application.
     """
     without_special_characters = (
-        text.replace("\n", "").replace(" ", "").replace(":", "").replace("\u00A7", "")
+        text.replace("\n", "").replace(" ", "").replace(":", "").replace("\u00a7", "")
     )
     if without_special_characters and not without_special_characters.isalnum():
         raise Exception(
@@ -143,7 +143,7 @@ def main():
             sys.exit("ERROR: --test-permissions is only supported on macOS")
         try:
             simulate_keypress(
-                "\u00A7", use_linux_uinput=False, osx_control_modifier=True
+                "\u00a7", use_linux_uinput=False, osx_control_modifier=True
             )
         except Exception as err:
             sys.exit(f"ERROR: {err}")
