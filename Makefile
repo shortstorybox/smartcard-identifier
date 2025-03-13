@@ -12,10 +12,11 @@ build/package.pkg: lint pyproject.toml src/smartcard_identifier.py macOS/com.sho
 		--ownership recommended --scripts macOS/scripts build/package.pkg
 
 SmartcardIdentifier.pkg: build/package.pkg macOS/distribution.xml
-	# Make sure you have and "Developer ID Application" certificate
-	# installed in your keychain. You can download it from
-	# https://developer.apple.com/account/resources/certificates/list
-	productbuild --distribution macOS/distribution.xml --package-path build/ --sign 'Developer ID Installer: Short Story, Inc. (PD7WK7PS94)' SmartcardIdentifier.pkg
+	@rm -rf build/signed.pkg
+	@productbuild --distribution macOS/distribution.xml --package-path build/ --sign 'Developer ID Installer: Short Story, Inc. (PD7WK7PS94)' build/signed.pkg || (echo '\033[31m\n\nSigning failed. Please install the "Developer ID Application" certificate into Keychain Access. Download from:\n\n    - https://developer.apple.com/account/resources/certificates/list\033[0m'; exit 1)
+	@xcrun notarytool submit build/signed.pkg --wait --keychain-profile 'notary-profile' || (echo '\033[31m\n\nNotarization failed. Please store credentials in Keychain Access as follows:\n\n    1. Create an app-specific password at https://account.apple.com/account/manage\n    2. $$ xcrun notarytool store-credentials notary-profile --team-id PD7WK7PS94 --apple-id YOUR-EMAIL@YOUR-DOMAIN.com\n\033[0m'; exit 1)
+	xcrun stapler staple build/signed.pkg
+	mv build/signed.pkg SmartcardIdentifier.pkg
 
 .PHONY: dist
 dist: lint
