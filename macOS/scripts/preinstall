@@ -7,4 +7,5 @@ if /bin/launchctl print gui/$USER_ID/com.shortstorybox.SmartcardIdentifier &> /d
 fi
 
 /usr/bin/pip3 install pyscard
+echo postinstall completed successfully > /dev/stderr
 
